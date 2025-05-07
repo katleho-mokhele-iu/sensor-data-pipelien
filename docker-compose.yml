@@ -1,0 +1,16 @@
+version: '4.4'
+
+services:
+  mongo:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./mongo-init:/docker-entrypoint-initdb.d 
+    networks:
+      - sensor_net
+
+networks:
+  sensor_net:
+    driver: bridge
