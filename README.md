@@ -7,6 +7,7 @@ This project implements a batch data storage system for environmental sensor dat
 - Uses MongoDB as the backend database
 - Containerized with Docker for portability and scalability
 - Python script to load data in batch mode
+- Simple Flask API to query stored data
 - Easily deployable on local or cloud environments
 
 ## Project Structure
@@ -16,9 +17,13 @@ sensor_data_pipeline/
 ├── mongo-init/
 │ └── init.js
 ├── scripts/
-│ └── load_data.py
+│ ├── load_data.py
+│ └── api.py
 ├── data/
 │ └── sample_sensor_data.json
+├── tests/
+│ └── test_load_data.py
+├── requirements.txt
 └── README.md
 ```
 
@@ -38,12 +43,22 @@ docker-compose up -d
 
 2. Install Python dependencies:
 ```bash
-pip install pymongo
+pip install -r requirements.txt
 ```
 
 3. Run the batch insert script:
 ```bash
 python scripts/load_data.py
+```
+
+4. Start the API server (optional):
+```bash
+python scripts/api.py
+```
+
+5. Run tests:
+```bash
+pytest
 ```
 
 ## Notes
